@@ -135,6 +135,23 @@ With the ESP8266 board connected to your computer, and the correct COM port sele
 Do this via __Sketch__ > __Upload__ (hit "Ctrl + U" or by clicking the right arrow in the tool bar).   
 (This could take a while for the first compilation.)   
 
+## Building without WiFi (optional)
+
+The WiFi web interface is optional. To leave it out at compile time, set the `ENABLE_WIFI` flag to 0 (it is enabled by default). This is handy where the WiFi module cannot be used, for example where it is not certified for radio emission (such as Japan's Giteki / 技適).
+
+* PlatformIO: `pio run -e d1_mini_nowifi`
+* Arduino IDE: set `#define ENABLE_WIFI 0` in `gbs-control.ino`, `OLEDMenuImplementation.cpp` and `PersWiFiManager.cpp`
+
+The device is then controlled from the OLED menu only, so the WiFi steps below do not apply.
+
+<span class="anim-fade-in">
+
+```warning
+The radio is kept off, but the ESP8266 SDK radio libraries are still linked, so verify there is no RF on hardware if you rely on it (not a substitute for radio certification). OTA and web-only settings are unavailable in this build.
+```
+
+</span>
+
 ## Accessing the web based control panel
 Gbscontrol offers several options, all via an interactive web page that is served from the ESP8266 via WiFi.   
 Here is how you access this control panel in the default AP (Access Point) mode:
