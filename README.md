@@ -1,5 +1,3 @@
-# gbs-control (fork)
-
 Fork of [ramapcsx2/gbs-control](https://github.com/ramapcsx2/gbs-control).
 
 ## Changes from upstream
