@@ -1,3 +1,5 @@
+#include "gbs-config.h"
+
 #include "ntsc_240p.h"
 #include "pal_240p.h"
 #include "ntsc_720x480.h"
@@ -25,8 +27,6 @@
 
 #define HAVE_BUTTONS 0
 #define USE_NEW_OLED_MENU 1
-
-#include "gbs-config.h"
 
 
 static inline void writeBytes(uint8_t slaveRegister, uint8_t *values, uint8_t numValues);
