@@ -26,10 +26,7 @@
 #define HAVE_BUTTONS 0
 #define USE_NEW_OLED_MENU 1
 
-// Set to 0 (or build with -DENABLE_WIFI=0) to compile without WiFi / web UI / OTA.
-#ifndef ENABLE_WIFI
-#define ENABLE_WIFI 1
-#endif
+#include "gbs-config.h"
 
 
 static inline void writeBytes(uint8_t slaveRegister, uint8_t *values, uint8_t numValues);
