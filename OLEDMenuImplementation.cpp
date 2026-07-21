@@ -1,6 +1,6 @@
-#define OSD_TIMEOUT 8000
-
 #include "gbs-config.h"
+
+#define OSD_TIMEOUT 8000
 
 #if ENABLE_WIFI
 #include <ESP8266WiFi.h>
