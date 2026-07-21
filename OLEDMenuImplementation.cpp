@@ -1,9 +1,6 @@
 #define OSD_TIMEOUT 8000
 
-// Per-translation-unit ENABLE_WIFI default (a #define in the .ino does not reach here).
-#ifndef ENABLE_WIFI
-#define ENABLE_WIFI 1
-#endif
+#include "gbs-config.h"
 
 #if ENABLE_WIFI
 #include <ESP8266WiFi.h>
