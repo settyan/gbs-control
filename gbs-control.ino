@@ -7,6 +7,7 @@
 #include "ntsc_1280x720.h"
 #include "ntsc_1280x1024.h"
 #include "ntsc_1920x1080.h"
+#include "ntsc_1920x1080_vscale512.h"
 #include "ntsc_downscale.h"
 #include "pal_1280x720.h"
 #include "pal_1280x1024.h"
@@ -4275,6 +4276,14 @@ void applyPresets(uint8_t result)
 #endif
         else if (uopt->presetPreference == 5) {
             writeProgramArrayNew(ntsc_1920x1080, false);
+        } else if (uopt->presetPreference == Output1080PVscale512) {
+            // the EDTV, 25khz and VGA upscale paths rewrite VDS_VSCALE for
+            // presetID 0x05, which would undo the 512 this preset is for
+            if (result == 1) {
+                writeProgramArrayNew(ntsc_1920x1080_vscale512, false);
+            } else {
+                writeProgramArrayNew(ntsc_1920x1080, false);
+            }
         } else if (uopt->presetPreference == 6) {
             writeProgramArrayNew(ntsc_downscale, false);
         }
@@ -4303,7 +4312,8 @@ void applyPresets(uint8_t result)
             writeProgramArrayNew(pal_1280x1024, false);
         }
 #endif
-        else if (uopt->presetPreference == 5) {
+        // no PAL counterpart to the vscale512 preset, use the stock one
+        else if (uopt->presetPreference == 5 || uopt->presetPreference == Output1080PVscale512) {
             writeProgramArrayNew(pal_1920x1080, false);
         } else if (uopt->presetPreference == 6) {
             writeProgramArrayNew(pal_downscale, false);
@@ -9340,7 +9350,7 @@ void handleType2Command(char argument)
             uopt->wantFullHeight = !uopt->wantFullHeight;
             saveUserPrefs();
             uint8_t vidMode = getVideoMode();
-            if (uopt->presetPreference == 5) {
+            if (uopt->presetPreference == 5 || uopt->presetPreference == Output1080PVscale512) {
                 if (GBS::GBS_PRESET_ID::read() == 0x05 || GBS::GBS_PRESET_ID::read() == 0x15) {
                     applyPresets(vidMode);
                 }

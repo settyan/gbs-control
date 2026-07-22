@@ -70,6 +70,9 @@ bool resolutionMenuHandler(OLEDMenuManager *manager, OLEDMenuItem *item, OLEDMen
         case MT1920x1080:
             preset = PresetPreference::Output1080P;
             break;
+        case MT1920x1080_VSCALE512:
+            preset = PresetPreference::Output1080PVscale512;
+            break;
         case MT_480s576:
             preset = PresetPreference::Output480P;
             break;
@@ -408,9 +411,9 @@ void initOLEDMenu()
 
     // Resolutions
     OLEDMenuItem *resMenu = oledMenu.registerItem(root, MT_NULL, IMAGE_ITEM(OM_RESOLUTION));
-    const char *resolutions[5] = {"1280x960", "1280x1024", "1280x720", "1920x1080", "480/576"};
-    uint8_t tags[5] = {MT_1280x960, MT1280x1024, MT1280x720, MT1920x1080, MT_480s576};
-    for (int i = 0; i < 5; ++i) {
+    const char *resolutions[6] = {"1280x960", "1280x1024", "1280x720", "1920x1080", "1080p VS512", "480/576"};
+    uint8_t tags[6] = {MT_1280x960, MT1280x1024, MT1280x720, MT1920x1080, MT1920x1080_VSCALE512, MT_480s576};
+    for (int i = 0; i < 6; ++i) {
         oledMenu.registerItem(resMenu, tags[i], resolutions[i], resolutionMenuHandler);
     }
     // downscale and passthrough

@@ -9,6 +9,8 @@ enum PresetPreference : uint8_t {
     Output1024P = 4,
     Output1080P = 5,
     OutputDownscale = 6,
+    // 1920x1080 with VDS_VSCALE 512: exactly 2.0x, ie 4x for a 240p source
+    Output1080PVscale512 = 7,
     OutputBypass = 10,
 };
 
