@@ -1,4 +1,4 @@
-#include "gbs-config.h"
+#include "config.h"
 
 #include "ntsc_240p.h"
 #include "pal_240p.h"

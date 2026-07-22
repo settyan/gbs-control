@@ -1,4 +1,4 @@
-#include "gbs-config.h"
+#include "config.h"
 
 #define OSD_TIMEOUT 8000
 

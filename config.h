@@ -1,3 +1,7 @@
+/**
+  config.h - compile time configuration
+*/
+
 #ifndef GBS_CONFIG_H_
 #define GBS_CONFIG_H_
 
